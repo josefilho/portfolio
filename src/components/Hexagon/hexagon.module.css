@@ -1,0 +1,22 @@
+.container {
+  width: 9.375rem;
+  height: 9.375rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+}
+
+.hexagon {
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(7px);
+}
+
+.image {
+  width: 60%;
+  height: 60%;
+  position: absolute;
+}
