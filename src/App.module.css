@@ -1,17 +1,67 @@
 .content {
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  
+  height: calc(100vh - 3.75vh);
+}
+
+.presentation {
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
-  height: calc(100% - 3.75vh);
+
+  height: 100%;
+  width: 50.125rem;
+
+  margin-left: 5.75rem;
+}
+
+.presentation h1 {
+  font-size: 4rem;
+
+  margin-bottom: 5.375rem;
+}
+
+.presentation h2 {
+  font-size: 3rem;
+
+  text-align: center;
+}
+
+.presentation h2 span {
+  color: var(--purple);
+}
+
+.presentation p {
+  font-size: 1.5rem;
+  color: var(--green);
+
+  margin-top: 2.375rem;
+}
+
+.presentation p + p {
+  font-size: 1.5rem;
+  color: var(--gray);
+
+  width: 41.9375rem;
+
+  text-align: justify;
+
+  margin-top: 7.875rem;
 }
 
 .skillContainer {
   display: grid;
   grid-template-columns: 1fr;
   
-  width: 23.4375rem;
+  min-width: 375px;
+
+  margin-right: 16.0625rem;
+
+  transition: all 0.5s ease;
 }
 
 .normal {
@@ -28,4 +78,30 @@
 
 .right + .normal {
   margin-top: -1rem;
+}
+
+@media (max-width: 1800px) {
+  .skillContainer {
+    margin-right: 10rem;
+  }
+}
+
+@media (max-width: 1600px) {
+  .skillContainer {
+    margin-right: 4rem;
+  }
+}
+
+@media (max-width: 1300px) {
+  .content {
+    justify-content: center;
+  }
+
+  .presentation {    
+    margin-left: 0;
+  }
+
+  .skillContainer {
+    visibility: hidden;
+  }
 }
