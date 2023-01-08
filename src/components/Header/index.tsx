@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Twitter, Instagram, Facebook, GitHub, Linkedin } from 'react-feather';
 
 import nullByteLogo from '../../assets/square-logo-50.svg';
@@ -11,9 +12,9 @@ const Header = () => {
         <img className={styles.logo} src={nullByteLogo} />
 
         <div className={styles.links}>
-          <a>Home</a>
-          <a>Works</a>
-          <a>College</a>
+          <a href='/'>Home</a>
+          <a href='/works'>Works</a>
+          <a href='/college'>College</a>
         </div>
 
       </header>
