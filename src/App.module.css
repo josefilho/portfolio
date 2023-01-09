@@ -5,6 +5,8 @@
   justify-content: space-between;
   
   height: calc(100vh - 3.75vh);
+
+  transition: all 0.5s ease;
 }
 
 .presentation {
@@ -17,22 +19,30 @@
   width: 50.125rem;
 
   margin-left: 5.75rem;
+
+  transition: all 0.5s ease;
 }
 
 .presentation h1 {
   font-size: 4rem;
 
   margin-bottom: 5.375rem;
+
+  transition: all 0.5s ease;
 }
 
 .presentation h2 {
   font-size: 3rem;
 
   text-align: center;
+
+  transition: all 0.5s ease;
 }
 
 .presentation h2 span {
   color: var(--purple);
+
+  filter: blur(0.050rem);
 }
 
 .presentation p {
@@ -103,5 +113,83 @@
 
   .skillContainer {
     visibility: hidden;
+  }
+}
+
+@media (max-width: 800px) {
+  .presentation {
+    width: 100%;
+  }
+
+  .presentation h1 {
+    font-size: 3rem;
+  }
+
+  .presentation h2 {
+    font-size: 2rem;
+  }
+
+  .presentation p {
+    font-size: 1rem;
+  }
+
+  .presentation p + p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .presentation {
+    width: 100%;
+  }
+
+  .presentation h1 {
+    font-size: 2rem;
+  }
+
+  .presentation h2 {
+    font-size: 1.5rem;
+  }
+
+  .presentation p {
+    font-size: 0.75rem;
+  }
+
+  .presentation p + p {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .presentation {
+    width: 90%;
+    height: calc(100vh - 3.75vh);
+    margin-left: 0;
+
+    margin-top: 30vh;
+  }
+
+  .presentation h1 {
+    margin-bottom: 2.5rem;
+  }
+
+  .presentation h2 {
+    margin-bottom: 0;
+  }
+
+  .presentation p {
+    margin-bottom: 0;
+  }
+
+  .presentation p + p {
+    width: 80%;
+    margin-top: 3rem;
   }
 }
