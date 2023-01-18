@@ -18,7 +18,7 @@
   height: 100%;
   width: 50.125rem;
 
-  margin-left: 5.75rem;
+  margin-left: 12.75rem;
 
   transition: all 0.5s ease;
 }
@@ -92,10 +92,27 @@
   margin-top: -1rem;
 }
 
+.backdrop {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  z-index: -10;
+  
+  width: 100vw;
+  height: 100vh;
+}
+
 
 /* Responsiveness*/
 
 @media (max-width: 1800px) {
+
+  .presentation {
+    margin-left: 10vw;
+  }
+
   .skillContainer {
     margin-right: 10rem;
   }
@@ -103,7 +120,7 @@
 
 @media (max-width: 1600px) {
   .presentation {
-    width: 80%;
+    margin-left: 8vw;
   }
   .skillContainer {
     margin-right: 4rem;
@@ -121,13 +138,13 @@
   }
 
   .presentation {
-    height: 100%;
-    width: 65%;
+    margin-left: 0;
+    margin-right: 5vw;
   }
 
   .presentation h1 {
     font-size: 3rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
   }
 
   .presentation h2 {
@@ -199,6 +216,12 @@
 }
 
 @media (max-width: 950px){
+
+  .presentation {
+    margin: 0;
+    flex: none;
+    width: 90%;
+  }
 
   .presentation h2 {
     width: 80%;

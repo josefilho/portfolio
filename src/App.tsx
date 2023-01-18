@@ -64,6 +64,18 @@ function App() {
         </div>
       </div>
 
+      <svg className={styles.backdrop} fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g opacity="0.3" filter="url(#filter0_f_607_25)">
+          <circle cx="890.5" cy="589.5" r="490.5" fill="#2F7EDA"/>
+        </g>
+        <defs>
+          <filter id="filter0_f_607_25" x="0" y="-301" width="1781" height="1781" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+            <feGaussianBlur stdDeviation="200" result="effect1_foregroundBlur_607_25"/>
+          </filter>
+        </defs>
+      </svg>
       
     </div>
   )
