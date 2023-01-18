@@ -21,7 +21,7 @@ const Header = () => {
       <div
         className={styles.socialMedia}
       >
-        <a href="https://twitter.com/thenullbyte" target="_blank">
+        <a href="https://twitter.com/thebitnull" target="_blank">
           <Twitter size={24} />
         </a>
         <a href="https://www.instagram.com/nullbyte.c" target="_blank">

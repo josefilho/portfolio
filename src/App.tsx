@@ -45,11 +45,11 @@ function App() {
           <div className={styles.normal}>
             <Hexagon
               image='https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg'
-              size={75}
+              // size={55}
             />
             <Hexagon
               image='https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg'
-              size={75}
+              // size={75}
             />
           </div>
 

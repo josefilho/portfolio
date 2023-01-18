@@ -8,6 +8,7 @@
 .header {
   height: 3.75vh;
   min-height: 60px;
+  width: 100vw;
 
   background: rgba(237, 230, 255, 0.1);
   backdrop-filter: blur(6px);
@@ -28,7 +29,6 @@
 
   height: 30px;
   margin-left: 9vw;
-
 }
 
 .links {
@@ -56,6 +56,7 @@
 }
 
 .socialMedia {
+  z-index: 1;
   position: absolute;
 
   right: 0;
