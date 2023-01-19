@@ -12,9 +12,9 @@ const Header = () => {
         <img className={styles.logo} src={nullByteLogo} />
 
         <div className={styles.links}>
-          <a href='/'>Home</a>
-          <a href='/works'>Works</a>
-          <a href='/college'>College</a>
+          <Link to='/'>Home</Link>
+          <Link to='/works'>Works</Link>
+          <Link to='/college'>College</Link>
         </div>
 
       </header>
