@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { Header } from '../../components/Header';
 
 import { Hexagon } from '../../components/Hexagon';
@@ -5,6 +7,8 @@ import { Hexagon } from '../../components/Hexagon';
 import styles from './styles.module.css';
 
 const HomePage: React.FC = () => {
+  const [showMore, setShowMore] = useState(false);
+
   return (
     <div>
       <Header />
@@ -13,11 +17,17 @@ const HomePage: React.FC = () => {
         <div className={styles.presentation}>
           <h1>Welcome</h1>
 
-          <h2>I'm José, a <span>FullStack Engineer</span> and a <span>Computer Science Student</span></h2>
+          <h2>I'm José, a <span>Computer Science Student</span></h2>
 
           <p>Be the Pull Request you wish in the world</p>
 
-          <p>In the first year of studying computer science I noticed that it would teach me a lot, but not everything I would like. So I took Rocketseat's GoStack 14 to learn more about web and mobile development. Since then I've been improving on better algorithms and a wider range of technologies.</p>
+          {!showMore ?
+            <button
+              className={styles.button}
+              onClick={() => setShowMore(true)}
+            >Show more</button>
+            : <p>In the first year of studying computer science I noticed that it would teach me a lot, but not everything I would like. So I took Rocketseat's GoStack 14 to learn more about web and mobile development. Since then I've been improving on better algorithms and a wider range of technologies.</p>
+          }
         </div>
 
         <div className={styles.skillContainer}>
