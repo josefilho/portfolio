@@ -1,5 +1,7 @@
 import React from "react";
+
 import logo from "../../assets/logo.svg";
+import nemesisPreview from "../../assets/nemesis_preview.png";
 
 // Reusable Component for Glassmorphism Cards
 const GlassCard: React.FC<{
@@ -194,9 +196,7 @@ const Main: React.FC = () => {
               {/* Project Visual Placeholder */}
               <div className="md:w-1/3 bg-slate-950/50 rounded-lg border border-slate-800 flex items-center justify-center relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-emerald-500/10"></div>
-                <span className="font-mono text-slate-600">
-                  [Interactive GUI Preview]
-                </span>
+                <img src={nemesisPreview} alt="Nemesis preview" />
               </div>
             </div>
           </GlassCard>
