@@ -1,15 +1,11 @@
-import { BrowserRouter } from 'react-router-dom';
+import React from 'react';
 
-import { MainRoutes } from './routes';
+import { Main } from './pages/Main';
 
-import './global.css';
-
-const App: React.FC = () => {
+const PortfolioSketch = () => {
   return (
-    <BrowserRouter>
-      <MainRoutes />
-    </BrowserRouter>
+    <Main />
   );
-}
+};
 
-export { App };
+export default PortfolioSketch;
