@@ -1,9 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 
 import logo from "../../assets/logo.svg";
 import nemesisPreview from "../../assets/nemesis_preview.png";
 
-// Reusable Component for Glassmorphism Cards
 const GlassCard: React.FC<{
   children: React.ReactNode;
   className?: string;
@@ -15,7 +14,6 @@ const GlassCard: React.FC<{
   </div>
 );
 
-// Component for Tech Badges
 const TechBadge: React.FC<{ text: string }> = ({ text }) => (
   <span className="px-3 py-1 rounded text-xs font-mono bg-purple-500/10 text-purple-300 border border-purple-500/20 mr-2 mb-2 inline-block hover:bg-purple-500/20 transition-colors cursor-default">
     {text}
@@ -23,11 +21,17 @@ const TechBadge: React.FC<{ text: string }> = ({ text }) => (
 );
 
 const Main: React.FC = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
   return (
-    <div className="min-h-screen bg-[radial-gradient(ellipse_at_top,#0f172a,#020617,#000000)] from-slate-900 via-slate-950 to-black text-slate-300 font-sans selection:bg-purple-500/30">
+    <div className="min-h-screen bg-[radial-gradient(ellipse_at_top,#0f172a,#020617,#000000)] from-slate-900 via-slate-950 to-black text-slate-300 font-sans selection:bg-purple-500/30 overflow-x-hidden">
       {/* NAVBAR GLASSMORPHISM */}
-      <nav className="fixed top-0 w-full z-50 h-16 flex justify-between items-center bg-slate-950/70 backdrop-blur-lg border-b border-white/5 px-8">
-        <img src={logo} alt="Gregório" className="h-8" />
+      <nav className="fixed top-0 w-full z-50 h-16 flex justify-between items-center bg-slate-950/70 backdrop-blur-lg border-b border-white/5 px-4 md:px-8">
+        <img src={logo} alt="Gregório" className="h-6 md:h-8" />
+
+        {/* Desktop Menu */}
         <div className="hidden md:flex gap-8">
           {["Work", "Research", "About"].map((item) => (
             <a
@@ -39,51 +43,82 @@ const Main: React.FC = () => {
             </a>
           ))}
         </div>
+
+        {/* Mobile Hamburger Button */}
+        <button
+          className="md:hidden text-slate-300 p-2 focus:outline-none"
+          onClick={toggleMenu}
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            {isMenuOpen ? (
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            ) : (
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            )}
+          </svg>
+        </button>
+
+        {/* Mobile Dropdown Menu */}
+        {isMenuOpen && (
+          <div className="absolute top-16 left-0 w-full bg-slate-950/95 backdrop-blur-xl border-b border-slate-800 md:hidden flex flex-col p-4 gap-4 shadow-2xl animate-fade-in-down">
+            {["Work", "Research", "About"].map((item) => (
+              <a
+                key={item}
+                className="text-base font-medium text-slate-300 hover:text-purple-400 py-2 border-b border-slate-800/50"
+                href={`#${item.toLowerCase()}`}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {item}
+              </a>
+            ))}
+          </div>
+        )}
       </nav>
 
-      <main className="pt-24 px-6 md:px-20 max-w-7xl mx-auto">
+      <main className="pt-24 px-4 sm:px-6 md:px-20 max-w-7xl mx-auto">
         {/* HERO SECTION */}
-        <section className="min-h-[90vh] flex flex-col md:flex-row items-center justify-between gap-12">
-          <div className="flex flex-col items-start text-left md:w-3/5">
+        <section className="min-h-[85vh] flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 pb-12">
+          <div className="flex flex-col items-start text-left w-full lg:w-3/5">
             <div className="inline-block mb-4 px-3 py-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-xs font-mono">
               Available for projects
             </div>
 
-            <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 font-bold text-5xl md:text-7xl mb-6 leading-tight">
-              Building Intelligent <br /> Defense Systems.
+            <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 font-bold text-4xl sm:text-5xl md:text-7xl mb-6 leading-tight">
+              Building Intelligent <br className="hidden sm:block" /> Defense Systems.
             </h1>
 
-            <p className="text-slate-400 text-lg md:text-xl max-w-2xl mb-10 leading-relaxed">
+            <p className="text-slate-400 text-base sm:text-lg md:text-xl max-w-2xl mb-8 leading-relaxed">
               I am{" "}
               <strong className="text-slate-200">José C. S. Gregório</strong>.
               Computer Science Student and AI Engineering Enthusiast. Focused on
               AI-driven Cybersecurity and Network Surveillance.
             </p>
 
-            <div className="flex gap-6 items-center">
+            {/* Buttons Container - Stack on Mobile */}
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start sm:items-center w-full sm:w-auto">
               {/* RGB ROTATING BUTTON (N.E.M.E.S.I.S) */}
-              <div className="relative group">
+              <div className="relative group w-full sm:w-auto">
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-emerald-600 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
-                <button className="relative px-8 py-4 bg-slate-950 rounded-lg leading-none flex items-center divide-x divide-slate-600">
+                <button className="relative w-full sm:w-auto px-6 sm:px-8 py-4 bg-slate-950 rounded-lg leading-none flex items-center justify-center sm:justify-start divide-x divide-slate-600">
                   <span className="flex items-center space-x-5">
-                    <span className="pr-6 text-slate-100 font-bold font-mono tracking-widest group-hover:text-purple-400 transition-colors">
+                    <span className="pr-6 text-slate-100 font-bold font-mono tracking-widest group-hover:text-purple-400 transition-colors text-sm sm:text-base">
                       N.E.M.E.S.I.S
                     </span>
                   </span>
-                  <span className="pl-6 text-emerald-400 group-hover:text-emerald-300 transition duration-200">
+                  <span className="pl-6 text-emerald-400 group-hover:text-emerald-300 transition duration-200 text-sm sm:text-base">
                     View Project &rarr;
                   </span>
                 </button>
               </div>
 
-              <button className="px-6 py-4 text-slate-400 hover:text-white transition-colors border-b border-transparent hover:border-purple-500">
+              <button className="w-full sm:w-auto px-6 py-4 text-slate-400 hover:text-white transition-colors border-b border-transparent hover:border-purple-500 text-center">
                 Contact Me
               </button>
             </div>
           </div>
 
           {/* STACKS SECTION */}
-          <div className="md:w-2/5 w-full">
+          <div className="w-full lg:w-2/5 mt-8 lg:mt-0">
             <GlassCard>
               <h2 className="text-xl font-bold text-slate-200 mb-6 border-b border-slate-700/50 pb-2">
                 Tech Arsenal
@@ -137,15 +172,15 @@ const Main: React.FC = () => {
         </section>
 
         {/* FEATURED WORK */}
-        <section id="work" className="py-20">
-          <div className="flex items-end justify-between mb-12">
-            <h1 className="text-4xl font-bold text-slate-100">Featured Work</h1>
-            <div className="h-1 w-32 bg-purple-600 rounded hidden md:block"></div>
+        <section id="work" className="py-12 md:py-20">
+          <div className="flex items-end justify-between mb-8 md:mb-12">
+            <h1 className="text-3xl md:text-4xl font-bold text-slate-100">Featured Work</h1>
+            <div className="h-1 w-16 md:w-32 bg-purple-600 rounded hidden md:block"></div>
           </div>
 
           <GlassCard className="group hover:border-purple-500/30 transition-all duration-500">
-            <div className="flex flex-col md:flex-row gap-8">
-              <div className="md:w-2/3">
+            <div className="flex flex-col lg:flex-row gap-8">
+              <div className="w-full lg:w-2/3 order-2 lg:order-1">
                 <h3 className="text-2xl font-bold text-emerald-400 mb-2">
                   N.E.M.E.S.I.S.
                 </h3>
@@ -153,7 +188,7 @@ const Main: React.FC = () => {
                   Network Event Monitoring & Evaluation System for Intrusion
                   Surveillance
                 </p>
-                <p className="text-slate-300 leading-relaxed mb-6">
+                <p className="text-slate-300 leading-relaxed mb-6 text-sm md:text-base">
                   An autonomous Artificial Intelligence agent designed to detect
                   and mitigate network attacks in real-time. Unlike static
                   firewalls, NEMESIS learns anomalous traffic patterns and
@@ -194,21 +229,21 @@ const Main: React.FC = () => {
               </div>
 
               {/* Project Visual Placeholder */}
-              <div className="md:w-1/3 bg-slate-950/50 rounded-lg border border-slate-800 flex items-center justify-center relative overflow-hidden">
+              <div className="w-full lg:w-1/3 bg-slate-950/50 rounded-lg border border-slate-800 flex items-center justify-center relative overflow-hidden h-48 lg:h-auto order-1 lg:order-2">
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-emerald-500/10"></div>
-                <img src={nemesisPreview} alt="Nemesis preview" />
+                <img src={nemesisPreview} alt="Nemesis preview" className="max-w-full max-h-full object-contain" />
               </div>
             </div>
           </GlassCard>
         </section>
 
         {/* ACADEMIC & RESEARCH */}
-        <section id="research" className="py-20">
-          <h1 className="text-4xl font-bold text-slate-100 mb-12">
+        <section id="research" className="py-12 md:py-20">
+          <h1 className="text-3xl md:text-4xl font-bold text-slate-100 mb-8 md:mb-12">
             Academic Research & Algorithms
           </h1>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             {/* GRAPH THEORY */}
             <GlassCard>
               <h2 className="text-2xl font-bold text-purple-400 mb-4 flex items-center">
@@ -279,7 +314,7 @@ const Main: React.FC = () => {
               <h2 className="text-2xl font-bold text-blue-400 mb-4">
                 Data Science & Big Data
               </h2>
-              <div className="grid md:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 <div>
                   <h3 className="font-bold text-slate-200 mb-2">
                     High-Dim Analysis
@@ -314,7 +349,7 @@ const Main: React.FC = () => {
         </section>
       </main>
 
-      <footer className="border-t border-slate-800 bg-slate-950/80 backdrop-blur py-8 text-center mt-12">
+      <footer className="border-t border-slate-800 bg-slate-950/80 backdrop-blur py-8 text-center mt-12 px-4">
         <p className="font-mono text-xs text-slate-600">
           © 2026 José C. S. Gregório. All rights reserved.
         </p>
